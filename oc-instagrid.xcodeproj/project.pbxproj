@@ -13,10 +13,10 @@
 		10FD4264214C00C500B86BD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10FD4263214C00C500B86BD5 /* Assets.xcassets */; };
 		10FD427C214C09D300B86BD5 /* Delm-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 10FD427A214C090A00B86BD5 /* Delm-Medium.otf */; };
 		10FD427D214C09D600B86BD5 /* ThirstySoftRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 10FD427B214C090A00B86BD5 /* ThirstySoftRegular.otf */; };
-		10FD4280214C0AD400B86BD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10FD427F214C0AD400B86BD5 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10F727A421510CAB0016552F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../../../../../../.Trash/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10FD4259214C00C500B86BD5 /* oc-instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oc-instagrid.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		10FD425C214C00C500B86BD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10FD425E214C00C500B86BD5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +25,6 @@
 		10FD4268214C00C500B86BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10FD427A214C090A00B86BD5 /* Delm-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Delm-Medium.otf"; sourceTree = "<group>"; };
 		10FD427B214C090A00B86BD5 /* ThirstySoftRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ThirstySoftRegular.otf; sourceTree = "<group>"; };
-		10FD427F214C0AD400B86BD5 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../../../../../.Trash/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +38,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10F727A221510C8D0016552F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				10FD4268214C00C500B86BD5 /* Info.plist */,
+				10F727A421510CAB0016552F /* LaunchScreen.storyboard */,
+				10FD4263214C00C500B86BD5 /* Assets.xcassets */,
+				10FD427A214C090A00B86BD5 /* Delm-Medium.otf */,
+				10FD427B214C090A00B86BD5 /* ThirstySoftRegular.otf */,
+				10FD425C214C00C500B86BD5 /* AppDelegate.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		10FD4250214C00C500B86BD5 = {
 			isa = PBXGroup;
 			children = (
@@ -58,12 +70,7 @@
 		10FD425B214C00C500B86BD5 /* oc-instagrid */ = {
 			isa = PBXGroup;
 			children = (
-				10FD4268214C00C500B86BD5 /* Info.plist */,
-				10FD427A214C090A00B86BD5 /* Delm-Medium.otf */,
-				10FD427B214C090A00B86BD5 /* ThirstySoftRegular.otf */,
-				10FD425C214C00C500B86BD5 /* AppDelegate.swift */,
-				10FD427F214C0AD400B86BD5 /* LaunchScreen.storyboard */,
-				10FD4263214C00C500B86BD5 /* Assets.xcassets */,
+				10F727A221510C8D0016552F /* Supporting Files */,
 				10FD426E214C04D300B86BD5 /* Model */,
 				10FD426F214C04D900B86BD5 /* View */,
 				10FD4270214C04E900B86BD5 /* Controller */,
@@ -155,7 +162,6 @@
 				10FD4264214C00C500B86BD5 /* Assets.xcassets in Resources */,
 				10FD427D214C09D600B86BD5 /* ThirstySoftRegular.otf in Resources */,
 				10FD427C214C09D300B86BD5 /* Delm-Medium.otf in Resources */,
-				10FD4280214C0AD400B86BD5 /* LaunchScreen.storyboard in Resources */,
 				10FD4262214C00C500B86BD5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -237,6 +243,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -292,6 +299,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -308,7 +316,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LB6NT562ER;
-				INFOPLIST_FILE = "oc-instagrid/Info.plist";
+				INFOPLIST_FILE = "oc-instagrid/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -326,7 +334,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LB6NT562ER;
-				INFOPLIST_FILE = "oc-instagrid/Info.plist";
+				INFOPLIST_FILE = "oc-instagrid/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
