@@ -87,14 +87,14 @@
                                     <action selector="didTapeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZGc-YX-Duu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaE-Ur-NGo">
-                                <rect key="frame" x="107.5" y="143.5" width="160.5" height="29"/>
-                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Swipe left to share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaE-Ur-NGo">
+                                <rect key="frame" x="115" y="148" width="145" height="24.5"/>
+                                <fontDescription key="fontDescription" name="Delm-Medium" family="Delm" pointSize="22"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowSwipe" translatesAutoresizingMaskIntoConstraints="NO" id="Vrx-KO-Wgj">
-                                <rect key="frame" x="180" y="122.5" width="15" height="10"/>
+                                <rect key="frame" x="180" y="127" width="15" height="10"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Instagrid" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiR-WZ-M07">
                                 <rect key="frame" x="112.5" y="28" width="150" height="39"/>
@@ -230,7 +230,9 @@
                         <outlet property="buttonCenter" destination="Yod-Lv-sYf" id="eus-Le-N7D"/>
                         <outlet property="buttonLeft" destination="gsa-zh-m4n" id="RBI-bK-YhF"/>
                         <outlet property="buttonRight" destination="NQB-Ab-wRB" id="9I8-6N-RgA"/>
+                        <outlet property="iconSwipe" destination="Vrx-KO-Wgj" id="ncz-ci-bsA"/>
                         <outlet property="pictureView" destination="Tak-nO-u7Y" id="cTb-Pi-rQf"/>
+                        <outlet property="swipeLabel" destination="WaE-Ur-NGo" id="Dyb-fv-I99"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

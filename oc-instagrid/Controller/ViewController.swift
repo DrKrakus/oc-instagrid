@@ -10,11 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var iconSwipe: UIImageView!
+    @IBOutlet weak var swipeLabel: UILabel!
     @IBOutlet weak var buttonRight: UIButton!
     @IBOutlet weak var buttonCenter: UIButton!
     @IBOutlet weak var buttonLeft: UIButton!
     @IBOutlet weak var pictureView: pictureView!
-    
     
     @IBAction func didTapeButton(_ sender: UIButton) {
         
@@ -31,9 +32,14 @@ class ViewController: UIViewController {
     }
     
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        checkOrientation()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
     
     private func changeStyle(_ button: UIButton) {
@@ -49,9 +55,25 @@ class ViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension ViewController {
+ 
+    // Landscape orientation change
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        super.viewWillTransition(to: size, with: coordinator)
+        checkOrientation()
+        
+    }
     
+    private func checkOrientation() {
+        if UIDevice.current.orientation.isLandscape {
+            swipeLabel.text = "Swipe left to share"
+            iconSwipe.transform = CGAffineTransform(rotationAngle: -1.57079633)
+        } else {
+            swipeLabel.text = "Swipe up to share"
+            iconSwipe.transform = CGAffineTransform(rotationAngle: 0.0)
+        }
+    }
 }
