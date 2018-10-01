@@ -25,7 +25,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tak-nO-u7Y" userLabel="pictureView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tak-nO-u7Y" userLabel="pictureView" customClass="pictureView" customModule="oc_instagrid" customModuleProvider="target">
                                 <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="EXg-E1-1VR">
@@ -68,6 +68,12 @@
                                     <constraint firstAttribute="trailing" secondItem="tfT-41-lWk" secondAttribute="trailing" constant="15" id="yQh-Fm-CRX"/>
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                <connections>
+                                    <outlet property="bottomLeftImageView" destination="gOI-60-iTe" id="lhn-bt-dyd"/>
+                                    <outlet property="bottomRightImageView" destination="j3y-7H-Gyt" id="Us9-fa-eDe"/>
+                                    <outlet property="topLeftImageView" destination="S3A-ca-nLx" id="E8F-9Z-8Xc"/>
+                                    <outlet property="topRightImageView" destination="Uoh-Br-66o" id="sOa-Ye-3Ob"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQB-Ab-wRB">
                                 <rect key="frame" x="247.5" y="555" width="80" height="80"/>
@@ -221,14 +227,10 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="bottomLeftImageView" destination="gOI-60-iTe" id="caY-dK-OLw"/>
-                        <outlet property="bottomRightImageView" destination="j3y-7H-Gyt" id="otE-kz-F1d"/>
                         <outlet property="buttonCenter" destination="Yod-Lv-sYf" id="eus-Le-N7D"/>
                         <outlet property="buttonLeft" destination="gsa-zh-m4n" id="RBI-bK-YhF"/>
                         <outlet property="buttonRight" destination="NQB-Ab-wRB" id="9I8-6N-RgA"/>
-                        <outlet property="pictureView" destination="Tak-nO-u7Y" id="2pv-ET-tMs"/>
-                        <outlet property="topLeftImageView" destination="S3A-ca-nLx" id="9vp-px-uNA"/>
-                        <outlet property="topRightImageView" destination="Uoh-Br-66o" id="xrY-nz-e6S"/>
+                        <outlet property="pictureView" destination="Tak-nO-u7Y" id="cTb-Pi-rQf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -7,18 +7,13 @@
 //
 
 import UIKit
-import Foundation
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var buttonRight: UIButton!
     @IBOutlet weak var buttonCenter: UIButton!
     @IBOutlet weak var buttonLeft: UIButton!
-    @IBOutlet weak var pictureView: UIView!
-    @IBOutlet weak var topLeftImageView: UIImageView!
-    @IBOutlet weak var topRightImageView: UIImageView!
-    @IBOutlet weak var bottomLeftImageView: UIImageView!
-    @IBOutlet weak var bottomRightImageView: UIImageView!
+    @IBOutlet weak var pictureView: pictureView!
     
     
     @IBAction func didTapeButton(_ sender: UIButton) {
@@ -46,14 +41,11 @@ class ViewController: UIViewController {
         // Change and anime style
         UIView.animate(withDuration: 0.2) {
             if button == self.buttonLeft {
-                self.topRightImageView.isHidden = true
-                self.bottomRightImageView.isHidden = false
+                self.pictureView.style = .layout1
             } else if button == self.buttonCenter {
-                self.topRightImageView.isHidden = false
-                self.bottomRightImageView.isHidden = true
+                self.pictureView.style = .layout2
             } else if button == self.buttonRight {
-                self.topRightImageView.isHidden = false
-                self.bottomRightImageView.isHidden = false
+                self.pictureView.style = .layout3
             }
         }
     }
