@@ -31,11 +31,11 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="EXg-E1-1VR">
                                         <rect key="frame" x="15" y="15" width="270" height="128"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconPlus" translatesAutoresizingMaskIntoConstraints="NO" id="S3A-ca-nLx">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconPlus" translatesAutoresizingMaskIntoConstraints="NO" id="S3A-ca-nLx">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconPlus" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uoh-Br-66o">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconPlus" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uoh-Br-66o">
                                                 <rect key="frame" x="142" y="0.0" width="128" height="128"/>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </imageView>
@@ -44,11 +44,11 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="tfT-41-lWk">
                                         <rect key="frame" x="15" y="157" width="270" height="128"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconPlus" translatesAutoresizingMaskIntoConstraints="NO" id="gOI-60-iTe">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconPlus" translatesAutoresizingMaskIntoConstraints="NO" id="gOI-60-iTe">
                                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconPlus" translatesAutoresizingMaskIntoConstraints="NO" id="j3y-7H-Gyt">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconPlus" translatesAutoresizingMaskIntoConstraints="NO" id="j3y-7H-Gyt">
                                                 <rect key="frame" x="142" y="0.0" width="128" height="128"/>
                                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </imageView>
@@ -69,7 +69,7 @@
                                 </constraints>
                                 <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQB-Ab-wRB">
+                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQB-Ab-wRB">
                                 <rect key="frame" x="247.5" y="555" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -78,7 +78,7 @@
                                 <state key="normal" backgroundImage="buttonRight"/>
                                 <state key="selected" image="buttonSelected"/>
                                 <connections>
-                                    <action selector="didTapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HYo-jw-hiI"/>
+                                    <action selector="didTapeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZGc-YX-Duu"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to share" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaE-Ur-NGo">
@@ -99,7 +99,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsa-zh-m4n">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gsa-zh-m4n">
                                 <rect key="frame" x="47.5" y="555" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -108,10 +108,10 @@
                                 <state key="normal" backgroundImage="buttonLeft"/>
                                 <state key="selected" image="buttonSelected"/>
                                 <connections>
-                                    <action selector="didTapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CjT-dH-ehy"/>
+                                    <action selector="didTapeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C7b-cr-77S"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yod-Lv-sYf">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yod-Lv-sYf">
                                 <rect key="frame" x="147.5" y="555" width="80" height="80"/>
                                 <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
@@ -120,7 +120,7 @@
                                 <state key="normal" backgroundImage="buttonCenter"/>
                                 <state key="selected" image="buttonSelected"/>
                                 <connections>
-                                    <action selector="didTapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KSf-5m-JgR"/>
+                                    <action selector="didTapeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Kj-Zi-Ez8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -171,18 +171,18 @@
                                 <exclude reference="MDU-tr-ecN"/>
                                 <exclude reference="T11-p9-aKd"/>
                                 <exclude reference="wYT-0f-OdQ"/>
+                                <exclude reference="CeT-XI-BJU"/>
                                 <exclude reference="DMS-qO-Q4r"/>
                                 <exclude reference="P7c-bF-3Pm"/>
                                 <exclude reference="VVb-kQ-rgt"/>
                                 <exclude reference="4tK-m6-d6O"/>
-                                <exclude reference="CeT-XI-BJU"/>
-                                <exclude reference="Y0U-8D-1if"/>
-                                <exclude reference="SxM-tn-0e5"/>
-                                <exclude reference="coP-8E-5ra"/>
-                                <exclude reference="m7m-Is-RI9"/>
                                 <exclude reference="XL2-Md-TrC"/>
                                 <exclude reference="XOF-4y-CJS"/>
                                 <exclude reference="vlz-Wg-yHE"/>
+                                <exclude reference="SxM-tn-0e5"/>
+                                <exclude reference="coP-8E-5ra"/>
+                                <exclude reference="m7m-Is-RI9"/>
+                                <exclude reference="Y0U-8D-1if"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
@@ -193,6 +193,8 @@
                                 <include reference="T11-p9-aKd"/>
                                 <exclude reference="Whv-Nl-mWA"/>
                                 <include reference="wYT-0f-OdQ"/>
+                                <include reference="CeT-XI-BJU"/>
+                                <exclude reference="SMp-Sh-V61"/>
                                 <exclude reference="1RG-q0-aRa"/>
                                 <include reference="DMS-qO-Q4r"/>
                                 <include reference="P7c-bF-3Pm"/>
@@ -201,11 +203,9 @@
                                 <exclude reference="mkY-sB-A5b"/>
                                 <include reference="4tK-m6-d6O"/>
                                 <exclude reference="7c3-re-AKk"/>
-                                <include reference="CeT-XI-BJU"/>
-                                <exclude reference="SMp-Sh-V61"/>
-                                <exclude reference="7fh-is-rCS"/>
-                                <exclude reference="F3C-CS-ewc"/>
-                                <include reference="Y0U-8D-1if"/>
+                                <include reference="XL2-Md-TrC"/>
+                                <include reference="XOF-4y-CJS"/>
+                                <include reference="vlz-Wg-yHE"/>
                                 <exclude reference="Ef2-DW-c3q"/>
                                 <include reference="SxM-tn-0e5"/>
                                 <include reference="coP-8E-5ra"/>
@@ -214,12 +214,22 @@
                                 <include reference="m7m-Is-RI9"/>
                                 <exclude reference="oFJ-77-cNI"/>
                                 <exclude reference="xBh-iM-mBz"/>
-                                <include reference="XL2-Md-TrC"/>
-                                <include reference="XOF-4y-CJS"/>
-                                <include reference="vlz-Wg-yHE"/>
+                                <exclude reference="7fh-is-rCS"/>
+                                <exclude reference="F3C-CS-ewc"/>
+                                <include reference="Y0U-8D-1if"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="bottomLeftImageView" destination="gOI-60-iTe" id="caY-dK-OLw"/>
+                        <outlet property="bottomRightImageView" destination="j3y-7H-Gyt" id="otE-kz-F1d"/>
+                        <outlet property="buttonCenter" destination="Yod-Lv-sYf" id="eus-Le-N7D"/>
+                        <outlet property="buttonLeft" destination="gsa-zh-m4n" id="RBI-bK-YhF"/>
+                        <outlet property="buttonRight" destination="NQB-Ab-wRB" id="9I8-6N-RgA"/>
+                        <outlet property="pictureView" destination="Tak-nO-u7Y" id="2pv-ET-tMs"/>
+                        <outlet property="topLeftImageView" destination="S3A-ca-nLx" id="9vp-px-uNA"/>
+                        <outlet property="topRightImageView" destination="Uoh-Br-66o" id="xrY-nz-e6S"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
