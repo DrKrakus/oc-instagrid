@@ -10,9 +10,7 @@ import UIKit
 
 class pictureView: UIView {
 
-    @IBOutlet weak var topLeftImageView: UIImageView!
     @IBOutlet weak var topRightImageView: UIImageView!
-    @IBOutlet weak var bottomLeftImageView: UIImageView!
     @IBOutlet weak var bottomRightImageView: UIImageView!
     
     var style: LayoutStyle = .layout3 {

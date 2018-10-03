@@ -17,12 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="icon_vector" translatesAutoresizingMaskIntoConstraints="NO" id="YVZ-lT-cVF">
-                                <rect key="frame" x="116" y="262" width="142" height="142"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" image="icon_vector" translatesAutoresizingMaskIntoConstraints="NO" id="YVZ-lT-cVF">
+                                <rect key="frame" x="116.5" y="262.5" width="142" height="142"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.2901960784" green="0.56470588239999997" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="YVZ-lT-cVF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="2cl-SQ-34h"/>
+                            <constraint firstItem="YVZ-lT-cVF" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="toa-rx-vsa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
                     </view>
                 </viewController>
