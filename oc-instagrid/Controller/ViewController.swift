@@ -21,8 +21,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var bottomLeftImageView: UIImageView!
     @IBOutlet weak var bottomRightImageView: UIImageView!
     
+    // Add tapped view
     var uiViewTapped: UIImageView?
-    
+
     @IBAction func didTapeButton(_ sender: UIButton) {
         
         /// Reset button style
@@ -38,7 +39,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(false)
+        super.viewDidAppear(true)
         
         checkOrientation()
     }
@@ -46,7 +47,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add gesture recognizer for the 4 UIImageView
+        // Add tap gesture recognizer for the 4 UIImageView
         let tapTopLeft = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         topLeftImageView.addGestureRecognizer(tapTopLeft)
         let tapTopRight = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
@@ -55,7 +56,6 @@ class ViewController: UIViewController {
         bottomRightImageView.addGestureRecognizer(tapBottomRight)
         let tapBottomLeft = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
         bottomLeftImageView.addGestureRecognizer(tapBottomLeft)
-        
     }
     
     // Change layout style
@@ -69,7 +69,72 @@ class ViewController: UIViewController {
             self.pictureView.style = .layout3
         }
     }
+    
+    //
+    @objc private func didSwipeView(_ gesture: UISwipeGestureRecognizer) {
+        let screenHeight = UIScreen.main.bounds.height
+        let screenWidth = UIScreen.main.bounds.width
+        let translationTransform: CGAffineTransform
+        
+        if gesture.direction == .up {
+            translationTransform = CGAffineTransform(translationX: 0, y: -screenHeight)
+        } else {
+            translationTransform = CGAffineTransform(translationX: -screenWidth, y: 0)
+        }
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.pictureView.transform = translationTransform
+            self.swipeLabel.transform = CGAffineTransform(scaleX: 0, y: 0)
+            self.iconSwipe.transform = CGAffineTransform(scaleX: 0, y: 0)
+        }) { (succes) in
+            if succes {
+                self.convertAndShareView()
+            }
+        }
+    }
+    
+    private func convertAndShareView() {
+        
+        // image to share
+        let image = pictureView.asImage()
+        
+        // set up activity view controller
+        let imageToShare = [image]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        
+        // exclude some activity types from the list
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.saveToCameraRoll, UIActivity.ActivityType.openInIBooks ]
+        
+        // Did share or cancel
+        activityViewController.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            self.showPictureView()
+        }
+        
+        // Present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+        
+        
+        
+    }
+    
+    private func showPictureView(){
+        pictureView.transform = .identity
+        pictureView.transform = CGAffineTransform(scaleX: 0, y: 0)
+        
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [], animations: {
+            self.pictureView.transform = .identity
+            self.swipeLabel.transform = .identity
+            self.iconSwipe.transform = .identity
+            if UIDevice.current.orientation.isLandscape {
+                self.iconSwipe.transform = CGAffineTransform(rotationAngle: (-CGFloat.pi/2))
+            }
+        }, completion: nil)
+    }
 }
+
+
+
+
 
 // MARK: - Landscape orentation
 extension ViewController {
@@ -78,21 +143,32 @@ extension ViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
+        // Check orientation
         checkOrientation()
     }
     
     // Check the current view orientation
     private func checkOrientation() {
+        // Add swipe gesture
+        let swipe = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeView(_:)))
         
         if UIDevice.current.orientation.isLandscape {
             swipeLabel.text = "Swipe left to share"
             iconSwipe.transform = CGAffineTransform(rotationAngle: (-CGFloat.pi/2))
+            swipe.direction = .left
         } else {
             swipeLabel.text = "Swipe up to share"
             iconSwipe.transform = CGAffineTransform(rotationAngle: 0.0)
+            swipe.direction = .up
         }
+        
+        pictureView.addGestureRecognizer(swipe)
     }
 }
+
+
+
+
 
 //// MARK: - Acces to photo library
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -114,6 +190,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
         if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             uiViewTapped!.image = selectedImage
             uiViewTapped!.contentMode = .scaleAspectFill
@@ -124,6 +201,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
         picker.dismiss(animated: true)
     }
 }
