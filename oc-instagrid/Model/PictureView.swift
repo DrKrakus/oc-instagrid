@@ -8,7 +8,7 @@
 
 import UIKit
 
-class pictureView: UIView {
+class PictureView: UIView {
 
     @IBOutlet weak var topRightImageView: UIImageView!
     @IBOutlet weak var bottomRightImageView: UIImageView!
@@ -40,7 +40,7 @@ class pictureView: UIView {
 }
 
 // Converting as image
-extension pictureView {
+extension PictureView {
     
     func asImage() -> UIImage {
         

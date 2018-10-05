@@ -7,23 +7,30 @@
 //
 
 import UIKit
+import Photos
 
 class ViewController: UIViewController {
     
+    // Set the light status bar
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    // Connecting the storyboard items
     @IBOutlet weak var iconSwipe: UIImageView!
     @IBOutlet weak var swipeLabel: UILabel!
     @IBOutlet weak var buttonRight: UIButton!
     @IBOutlet weak var buttonCenter: UIButton!
     @IBOutlet weak var buttonLeft: UIButton!
-    @IBOutlet weak var pictureView: pictureView!
+    @IBOutlet weak var pictureView: PictureView!
     @IBOutlet weak var topLeftImageView: UIImageView!
     @IBOutlet weak var topRightImageView: UIImageView!
     @IBOutlet weak var bottomLeftImageView: UIImageView!
     @IBOutlet weak var bottomRightImageView: UIImageView!
     
     // Add tapped view
-    var uiViewTapped: UIImageView?
-
+    var viewTapped: UIImageView?
+    
     @IBAction func didTapeButton(_ sender: UIButton) {
         
         /// Reset button style
@@ -41,37 +48,42 @@ class ViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         
+        // Check the device current orientation
         checkOrientation()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add tap gesture recognizer for the 4 UIImageView
+        // Create and add tap gesture recognizer for the 4 UIImageView
         let tapTopLeft = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
-        topLeftImageView.addGestureRecognizer(tapTopLeft)
         let tapTopRight = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
-        topRightImageView.addGestureRecognizer(tapTopRight)
         let tapBottomRight = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
-        bottomRightImageView.addGestureRecognizer(tapBottomRight)
         let tapBottomLeft = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        topLeftImageView.addGestureRecognizer(tapTopLeft)
+        topRightImageView.addGestureRecognizer(tapTopRight)
+        bottomRightImageView.addGestureRecognizer(tapBottomRight)
         bottomLeftImageView.addGestureRecognizer(tapBottomLeft)
+        
     }
     
     // Change layout style
     private func changeStyle(_ button: UIButton) {
         
-        if button == self.buttonLeft {
-            self.pictureView.style = .layout1
-        } else if button == self.buttonCenter {
-            self.pictureView.style = .layout2
-        } else if button == self.buttonRight {
-            self.pictureView.style = .layout3
+        UIView.animate(withDuration: 0.2) {
+            if button == self.buttonLeft {
+                self.pictureView.style = .layout1
+            } else if button == self.buttonCenter {
+                self.pictureView.style = .layout2
+            } else if button == self.buttonRight {
+                self.pictureView.style = .layout3
+            }
         }
     }
     
     //
     @objc private func didSwipeView(_ gesture: UISwipeGestureRecognizer) {
+        
         let screenHeight = UIScreen.main.bounds.height
         let screenWidth = UIScreen.main.bounds.width
         let translationTransform: CGAffineTransform
@@ -112,9 +124,6 @@ class ViewController: UIViewController {
         
         // Present the view controller
         self.present(activityViewController, animated: true, completion: nil)
-        
-        
-        
     }
     
     private func showPictureView(){
@@ -128,13 +137,9 @@ class ViewController: UIViewController {
             if UIDevice.current.orientation.isLandscape {
                 self.iconSwipe.transform = CGAffineTransform(rotationAngle: (-CGFloat.pi/2))
             }
-        }, completion: nil)
+        })
     }
 }
-
-
-
-
 
 // MARK: - Landscape orentation
 extension ViewController {
@@ -149,9 +154,10 @@ extension ViewController {
     
     // Check the current view orientation
     private func checkOrientation() {
-        // Add swipe gesture
+        // Create the swipe gestures
         let swipe = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeView(_:)))
         
+        // Orientation changes
         if UIDevice.current.orientation.isLandscape {
             swipeLabel.text = "Swipe left to share"
             iconSwipe.transform = CGAffineTransform(rotationAngle: (-CGFloat.pi/2))
@@ -162,39 +168,47 @@ extension ViewController {
             swipe.direction = .up
         }
         
+        // Clean
+        pictureView.gestureRecognizers?.forEach {
+            pictureView.removeGestureRecognizer($0)
+        }
+        
+        // Add
         pictureView.addGestureRecognizer(swipe)
     }
 }
 
-
-
-
-
-//// MARK: - Acces to photo library
+// MARK: - Acces to photo library
 extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @objc private func didTapView(_ gesture: UITapGestureRecognizer){
         
         guard let view = gesture.view as? UIImageView else { return }
         
-        uiViewTapped = view
+        viewTapped = view
         
-        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.allowsEditing = false
-            imagePicker.sourceType = .photoLibrary
+        PHPhotoLibrary.requestAuthorization { status in
             
-            self.present(imagePicker, animated: true, completion: nil)
+            switch status{
+            case .authorized where UIImagePickerController.isSourceTypeAvailable(.photoLibrary):
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.allowsEditing = false
+                imagePicker.sourceType = .photoLibrary
+                
+                self.present(imagePicker, animated: true)
+            default:
+                break
+            }
         }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            uiViewTapped!.image = selectedImage
-            uiViewTapped!.contentMode = .scaleAspectFill
-            uiViewTapped!.clipsToBounds = true
+            viewTapped!.image = selectedImage
+            viewTapped!.contentMode = .scaleAspectFill
+            viewTapped!.clipsToBounds = true
         }
         
         picker.dismiss(animated: true)
