@@ -187,6 +187,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         
         viewTapped = view
         
+        // Check the acces authorization to the photo library
         PHPhotoLibrary.requestAuthorization { status in
             
             switch status{
@@ -198,7 +199,26 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                 
                 self.present(imagePicker, animated: true)
             default:
-                break
+                // Alert pop-up
+                let alert = UIAlertController(title: "", message: "You've refused the acces to your photo library, grant the acces in your phone settings", preferredStyle: .alert)
+                // Settings button
+                let settings = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                    
+                    guard let settingsUrl = URL(string:UIApplication.openSettingsURLString) else { return }
+                    
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.open(settingsUrl)
+                    }
+                }
+                // Cancel button
+                let cancel = UIAlertAction(title: "Cancel", style: .destructive)
+                
+                // Add the actions
+                alert.addAction(settings)
+                alert.addAction(cancel)
+                
+                // Show the alert
+                self.present(alert, animated: true)
             }
         }
     }
