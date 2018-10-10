@@ -9,7 +9,8 @@
 import UIKit
 import Photos
 
-class ViewController: UIViewController {
+
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // Set the light status bar
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -17,6 +18,7 @@ class ViewController: UIViewController {
     }
     
     // Connecting the storyboard items
+    @IBOutlet var themeView: Theme!
     @IBOutlet weak var iconSwipe: UIImageView!
     @IBOutlet weak var swipeLabel: UILabel!
     @IBOutlet weak var buttonRight: UIButton!
@@ -30,6 +32,7 @@ class ViewController: UIViewController {
     
     // Add tapped view
     var viewTapped: UIImageView?
+    var customThemeActive = false
     
     @IBAction func didTapeButton(_ sender: UIButton) {
         
@@ -44,6 +47,8 @@ class ViewController: UIViewController {
         // Then change style of the pictureView
         changeStyle(sender)
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
@@ -67,10 +72,23 @@ class ViewController: UIViewController {
         
     }
     
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        
+        guard motion == .motionShake else { return }
+        
+        if customThemeActive {
+            themeView.theme = .classic
+            customThemeActive = false
+        } else {
+            themeView.theme = .custom
+            customThemeActive = true
+        }
+    }
+    
     // Change layout style
     private func changeStyle(_ button: UIButton) {
         
-        UIView.animate(withDuration: 0.2) {
+        UIView.animate(withDuration: 0.1) {
             if button == self.buttonLeft {
                 self.pictureView.style = .layout1
             } else if button == self.buttonCenter {
@@ -179,13 +197,9 @@ extension ViewController {
 }
 
 // MARK: - Acces to photo library
-extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ViewController {
     
     @objc private func didTapView(_ gesture: UITapGestureRecognizer){
-        
-        guard let view = gesture.view as? UIImageView else { return }
-        
-        viewTapped = view
         
         // Check the acces authorization to the photo library
         PHPhotoLibrary.requestAuthorization { status in
@@ -193,6 +207,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             switch status{
             case .authorized where UIImagePickerController.isSourceTypeAvailable(.photoLibrary):
                 let imagePicker = UIImagePickerController()
+                
                 imagePicker.delegate = self
                 imagePicker.allowsEditing = false
                 imagePicker.sourceType = .photoLibrary
@@ -201,6 +216,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
             default:
                 // Alert pop-up
                 let alert = UIAlertController(title: "", message: "You've refused the acces to your photo library, grant the acces in your phone settings", preferredStyle: .alert)
+                
                 // Settings button
                 let settings = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
                     
@@ -210,6 +226,7 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                         UIApplication.shared.open(settingsUrl)
                     }
                 }
+                
                 // Cancel button
                 let cancel = UIAlertAction(title: "Cancel", style: .destructive)
                 
@@ -221,14 +238,18 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
                 self.present(alert, animated: true)
             }
         }
+        
+        guard let view = gesture.view as? UIImageView else { return }
+        
+        viewTapped = view
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         if let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            viewTapped!.image = selectedImage
             viewTapped!.contentMode = .scaleAspectFill
             viewTapped!.clipsToBounds = true
+            viewTapped!.image = selectedImage
         }
         
         picker.dismiss(animated: true)
