@@ -10,7 +10,7 @@ import UIKit
 
 class PictureView: UIView {
 
-    // Connecting views
+    // Connecting the storyboard items
     @IBOutlet weak var topRightImageView: UIImageView!
     @IBOutlet weak var bottomRightImageView: UIImageView!
     
@@ -19,12 +19,16 @@ class PictureView: UIView {
         case layout1, layout2, layout3
     }
     
+    // Computed properties for the pictureView layout
     var style: LayoutStyle = .layout3 {
         didSet {
             changeStyle(style)
         }
     }
     
+    /// Change the pictureView layout
+    ///
+    /// - parameter style: Can be layout 1, 2 or 3
     private func changeStyle(_ style: LayoutStyle) {
         
         switch style {
@@ -41,13 +45,18 @@ class PictureView: UIView {
     }
 }
 
-// Converting as image
+// Converting the pictureView as image
 extension PictureView {
     
+    /// Converting the UIView as UIImage
+    ///
+    /// - returns: UIImage
     func asImage() -> UIImage {
         
+        // Create a renderer with the bounds of the pictureView
         let renderer = UIGraphicsImageRenderer(bounds: bounds)
         
+        // Return the UIImage
         return renderer.image(actions: { rendererContext in
             layer.render(in: rendererContext.cgContext)
         })

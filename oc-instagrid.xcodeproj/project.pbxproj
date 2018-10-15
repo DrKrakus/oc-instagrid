@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1006183D2162913100EDF32E /* PictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PictureView.swift; path = "oc-instagrid/Model/PictureView.swift"; sourceTree = SOURCE_ROOT; };
+		1006183D2162913100EDF32E /* PictureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PictureView.swift; path = "oc-instagrid/View/PictureView.swift"; sourceTree = SOURCE_ROOT; };
 		10CB58BA216DF78D003CE370 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		10EECF982163708C00798A7B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10FD4259214C00C500B86BD5 /* oc-instagrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "oc-instagrid.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,7 +86,6 @@
 		10FD426E214C04D300B86BD5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1006183D2162913100EDF32E /* PictureView.swift */,
 				10CB58BA216DF78D003CE370 /* Theme.swift */,
 			);
 			path = Model;
@@ -95,6 +94,7 @@
 		10FD426F214C04D900B86BD5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1006183D2162913100EDF32E /* PictureView.swift */,
 				10FD4260214C00C500B86BD5 /* Main.storyboard */,
 			);
 			path = View;

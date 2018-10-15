@@ -9,23 +9,39 @@
 import UIKit
 
 class Theme: UIView {
-
+    
+    // Connect the storyboard items
     @IBOutlet var pictureView: UIView!
     @IBOutlet var photoViews: [UIImageView]!
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var centerButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
+    // Enum for the theme style
     enum ThemeStyle {
         case classic, custom
+        
+        // Property for switch between classic and custom style
+        var toggleTheme: ThemeStyle {
+            switch self {
+            case .classic:
+                return .custom
+            case .custom:
+                return .classic
+            }
+        }
     }
     
+    // Computed properties for the theme style
     var theme: ThemeStyle = .classic {
         didSet {
             changeTheme(theme)
         }
     }
     
+    /// Change the app's theme
+    ///
+    /// - parameter theme: Can be classic or custom
     private func changeTheme(_ theme: ThemeStyle) {
         
         switch theme {
