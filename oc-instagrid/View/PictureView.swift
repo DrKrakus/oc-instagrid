@@ -8,6 +8,7 @@
 
 import UIKit
 
+@IBDesignable
 class PictureView: UIView {
 
     // Connecting the storyboard items
@@ -19,7 +20,7 @@ class PictureView: UIView {
         case layout1, layout2, layout3
     }
     
-    // Computed properties for the pictureView layout
+    // Computed property for the pictureView layout
     var style: LayoutStyle = .layout3 {
         didSet {
             changeStyle(style)

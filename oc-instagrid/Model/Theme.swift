@@ -32,7 +32,7 @@ class Theme: UIView {
         }
     }
     
-    // Computed properties for the theme style
+    // Computed property for the theme style
     var theme: ThemeStyle = .classic {
         didSet {
             changeTheme(theme)
