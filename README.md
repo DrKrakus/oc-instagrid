@@ -8,4 +8,4 @@
 
 ## Screenshots de l'app
 
-![Screenshots de l'app Baluchon](screenshot/baluchon.png)
+![Screenshots de l'app Baluchon](screenshot/instagrid.png)
